@@ -1,4 +1,7 @@
 <?php
+
+use PharIo\Manifest\Url;
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -89,7 +92,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array();
+$autoload['helper'] = array('url');
 
 /*
 | -------------------------------------------------------------------
