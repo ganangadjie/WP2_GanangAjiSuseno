@@ -1,8 +1,35 @@
-<section>
-    <h1><?php echo $judul ?></h1>
-    <p align='justify'>Pada pengertian codeigniter di atas tadi di jelaskan bahwa codeigniter menggunakan metode MVC. Apa itu MVC? Kita juga harus mengetahui apa itu MVC sebelum masuk dan lebih
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=”utf-8”>
+    <title>Web Prog II | Merancang Template sederhana dengan
+codeigniter</title>
+    <link rel=”stylesheet” type=”text/css” href=”<?php echo
+base_url() ?>assets/css/stylebuku.css”>
+</head>
+<body>
+    <div id=”wrapper”>
+        <header>
+            <hgroup>
+                <h1>RentalBuku.net</h1>
+                <h3>Membuat Template Sederhana dengan
+CodeIgniter</h3>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a href=”<?php echo
+base_url().'index.php/web' ?>”>Home</a></li>
+                    <li><a href=”<?php echo
+base_url().'index.php/web/about' ?>”>About</a></li>
+                    </ul>
+                </nav>
+                <div class=”clear”></div>
+            </header> 
+            <section>
+                <h1><?php echo $judul ?></h1>
+                <p align='justify'>Pada pengertian codeigniter di atas tadi di jelaskan bahwa codeigniter menggunakan metode MVC. Apa itu MVC? Kita juga harus mengetahui apa itu MVC sebelum masuk dan lebih
 jauh dalam belajar codeigniter.</p>
- <p>MVC adalah teknik atau konsep yang memisahkan
+                <p>MVC adalah teknik atau konsep yang memisahkan
 komponen utama menjadi tiga komponen yaitu model, view dan
 controller.</p>
 
@@ -44,4 +71,10 @@ dengan controller, dia hanya perlu berhubungan dengan view untuk
 mendesign tampilann aplikasi, karena back-end developer yang menangani bagian controller dan modelnya. Jadi pembagian tugas pun
 menjadi mudah dan pengembangan aplikasi dapat di lakukan dengan
 cepat dan terstruktur.</p>
- </section>
+</section>
+<footer>
+            <a href=”http://www.RentalBuku.com”>RentalBuku</a>
+        </footer
+    </div>
+</body>
+</html>
