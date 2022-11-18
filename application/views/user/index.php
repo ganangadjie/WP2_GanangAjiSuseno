@@ -22,8 +22,7 @@
                                                                                             ); ?></b></small></p>
                 </div>
                 <div class="btn btn-info ml-3 my-3">
-                    <a href="<?= base_url('user/ubahprofil'); ?>" class="text text-white"><i class="fas fa-user-edit"></i> Ubah
-                        Profil</a>
+                    <a href="<?= base_url('user/ubahprofil'); ?>" class="text text-white"><i class="fas fa-user-edit"></i> Ubah Profil</a>
                 </div>
             </div>
         </div>
