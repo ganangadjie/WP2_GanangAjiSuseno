@@ -105,4 +105,6 @@ class Autentifikasi extends CI_Controller
             redirect('autentifikasi');
         }
     }
+    
+    
 }
