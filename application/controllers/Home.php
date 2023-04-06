@@ -37,7 +37,6 @@ class Home extends CI_Controller
 
     public function detailBuku()
     {
-
         $id = $this->uri->segment(3);
         $buku = $this->ModelBuku->joinKategoriBuku(['buku.id' => $id])->result();
         $data['user'] = "Pengunjung";
@@ -60,5 +59,6 @@ class Home extends CI_Controller
         $this->load->view('buku/detail-buku', $data);
         $this->load->view('templates/templates-user/modal');
         $this->load->view('templates/templates-user/footer');
+    
     }
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PhpParser\Node\Expr\FuncCall;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 class ModelUser extends CI_Model
 {
@@ -29,4 +32,10 @@ class ModelUser extends CI_Model
         return $this->db->get();
     }
     
+    public function joinKategoriBuku($where)
+    {
+        $this->db->from('buku');
+        $this->db->join('kategori','kategori.id = buku.id_kategori');
+        $this->db->where('buku');
+    }
 }
