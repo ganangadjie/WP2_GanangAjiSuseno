@@ -67,7 +67,7 @@ class Booking extends CI_Controller
         //cek jika masih ada booking buku yang belum diambil
         $databooking = $this->db->query("select*from booking where id_user='$userid'")->num_rows();
         if ($databooking > 0) {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Masih Ada booking buku sebelumnya yang belum diambil.<br> Abmil Buku yang dibooking atau tunggu 1x24 Jam untuk bisa booking kembali </div>');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Masih Ada booking buku sebelumnya yang belum diambil.<br> Ambil Buku yang dibooking atau tunggu 1x24 Jam untuk bisa booking kembali </div>');
             redirect(base_url());
         }
         //jika buku yang diklik booking sudah ada di keranjang
@@ -87,7 +87,6 @@ class Booking extends CI_Controller
         $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Buku berhasil ditambahkan ke keranjang </div>');
         redirect(base_url() . 'home');
     }
-
 
     public function hapusbooking()
     {
@@ -140,5 +139,29 @@ class Booking extends CI_Controller
         $this->load->view('booking/info-booking', $data);
         $this->load->view('templates/templates-user/modal');
         $this->load->view('templates/templates-user/footer');
+    }
+
+    public function exportToPdf()
+    {
+        $id_user = $this->session->userdata('id_user');
+        $data['user'] = $this->session->userdata('nama');
+        $data['judul'] = "Cetak Bukti Booking";
+        $data['useraktif'] = $this->ModelUser->cekData(['id' => $this->session->userdata('id_user')])->result();
+        $data['items'] = $this->db->query("select*from booking bo, booking_detail d, buku bu where d.id_booking=bo.id_booking and d.id_buku=bu.id and bo.id_user='$id_user'")->result_array();
+
+        $this->load->library('dompdf_gen');
+
+        $this->load->view('booking/bukti-pdf', $data);
+
+        $paper_size = 'A4'; // ukuran kertas
+        $orientation = 'landscape'; //tipe format kertas potrait atau landscape
+        $html = $this->output->get_output();
+
+        $this->dompdf->set_paper($paper_size, $orientation);
+        //Convert to PDF
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("bukti-booking-$id_user.pdf", array('Attachment' => 0));
+        // nama file pdf yang di hasilkan
     }
 }
